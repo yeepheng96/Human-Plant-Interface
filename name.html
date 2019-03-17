@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Hi! I'm Mr Green! May I know your name?</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <br>
+  <ion-item>
+    <ion-label floating>Nickname</ion-label>
+    <ion-input type="text" [(ngModel)]="myName" required></ion-input>
+  </ion-item>
+  <br>
+  <div text-center>
+    <button (click)="btnEnterName($myName)" ion-button round outline>Enter</button>
+  </div>
+</ion-content>

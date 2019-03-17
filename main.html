@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mr Green's Home</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content center text-center class="center-text">
+  <h2>Hi! Nice to Meet You!</h2>
+  <br>
+  <div>
+  <button class="btn btn1" (click)="checkPlantCondition()" ion-button>Mr Green's condition</button>
+  </div>
+  <br>
+  <div>
+  <button class="btn btn1" (click)="makeInteraction()" ion-button>Chat with Mr Green!</button>
+  </div>
+  <br>
+  <div>
+  <button class="btn btn1" (click)="evaluate()" ion-button>Rate!</button>
+  </div>
+  <br>
+  <div>
+    {{currentRate}} amazing people want to chat with me again!
+  </div>
+</ion-content>

@@ -1,0 +1,372 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mr Green's Chat</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content center text-center class="center-text">
+  <div *ngIf="greet">
+    <br>
+    <br>
+    Hi! Nice to meet you!
+    <br>
+    <br>
+    <button (click)="firstInter()" ion-button round outline>Hi! How are you today?</button>
+  </div>
+
+  <div *ngIf="plantGood">
+    <br>
+    <br>
+    I'm fine! How about you?
+    <br>
+    <br>
+    <button (click)="myInter()" ion-button round outline>I'm fine today</button>
+  </div>
+
+  <div *ngIf="plantBad">
+    <br>
+    <br>
+    I'm not fine...
+    <br>
+    <br>
+    <button (click)="badPhase()" ion-button round outline>Why?</button>
+  </div>
+
+  <div *ngIf="hobby">
+    <br>
+    <br>
+    What is your hobby?
+    <br>
+    <br>
+    <select (change)= "hobbies($event)">
+      <option value = "swimming">Swimming</option>
+      <option value = "playing badminton">Badminton</option>
+      <option value = "playing online games">Online games</option>
+      <option value = "playing tennis">Tennis</option>
+      <option value = "jogging">Jogging</option>
+      <option value = "sleeping">Sleeping</option>
+      <option value = "playing basketball">Basketball</option>
+      <option value = "climbing mountain">Climb mountain</option>
+    </select>
+    <br>
+    <br>
+    <button (click)="secondInter()" ion-button round outline>Next</button>
+  </div>
+
+  <div *ngIf="food">
+    <br>
+    <br>
+    Your favourite hobby is {{selectedHobbies}}!
+    <br>
+    Great! What is your favourite food?
+    <br>
+    <br>
+    <select (change)= "foods($event)">
+      <option value = "Sweets">Sweets</option>
+      <option value = "Fruits">Fruits</option>
+      <option value = "Vegetables">Vegetables</option>
+      <option value = "Breads">Breads</option>
+      <option value = "Noodles">Noodles</option>
+      <option value = "Biscuits">Biscuits</option>
+      <option value = "Snacks">Snacks</option>
+      <option value = "Burgers">Burgers</option>
+      <option value = "Icecream">Ice creams</option>
+    </select>
+    <br>
+    <br>
+    <button (click)="thirdInter()" ion-button round outline>Next</button>
+  </div>
+
+  <div *ngIf="amb">
+    <br>
+    <br>
+    {{selectedFoods}}? Looks so tasty!
+    <br>
+    Wow! Now what's your ambitious?
+    <br>
+    <br>
+    <select (change)= "ambs($event)">
+      <option value = "Doctor">Doctor</option>
+      <option value = "Police">Police</option>
+      <option value = "Musician">Musician</option>
+      <option value = "Athlete">Athlete</option>
+      <option value = "Boss">Boss</option>
+      <option value = "Gardener">Gardener</option>
+      <option value = "Businessman">Businessman</option>
+      <option value = "Waiter">Waiter</option>
+      <option value = "Politician">Politician</option>
+    </select>
+    <br>
+    <br>
+    <button (click)="forthInter()" ion-button round outline>Next</button>
+  </div>
+
+  <div *ngIf="likes">
+    <br>
+    <br>
+    Which cartoon you like the most?
+    <br>
+    <br>
+    <select (change)= "cartoons($event)">
+      <option value = 1>Mickey Mouse</option>
+      <option value = 2>SpongeBobs</option>
+      <option value = 3>Tom and Jerry</option>
+      <option value = 4>Hello Kitty</option>
+      <option value = 5>The Simpsons</option>
+      <option value = "No">I don't have it</option>
+    </select>
+    <br>
+    <br>
+    <button (click)="likingInter()" ion-button round outline>Next</button>
+  </div>
+
+  <div *ngIf="dislikes">
+    <br>
+    <br>
+    <img src="assets/imgs/mickey.jpg" *ngIf="selectedCartoons==1">
+    <img src="assets/imgs/spongebob.jpg" *ngIf="selectedCartoons==2">
+    <img src="assets/imgs/tomandjerry.png" *ngIf="selectedCartoons==3">
+    <img src="assets/imgs/hello.png" *ngIf="selectedCartoons==4">
+    <img src="assets/imgs/simpsons.jpg" *ngIf="selectedCartoons==5">
+    <br>
+    <br>
+    Alright! What kind of things you don't like?
+    <br>
+    <br>
+    <select (change)= "dislikeThings($event)">
+      <option value = "Yup, fighting is bad! If you fight you will hurt yourself!">Fighting</option>
+      <option value = "Well, remember to bath if you're smelly or dirty! Keep clean yourself!">Dirty yourself</option>
+      <option value = "Yeah, make sure you don't try to steal from other people!">Stealing</option>
+      <option value = "If you get bullied, try to seek help from your parents!">Bullying</option>
+      <option value = "That's good!'">I don't have it</option>
+    </select>
+    <br>
+    <br>
+    <button (click)="dislikingInter()" ion-button round outline>Next</button>
+  </div>
+
+  <div *ngIf="happy">
+    <br>
+    <br>
+    Do your have any happiest life moment?
+    <br>
+    Tell me if you have it!
+    <br>
+    <br>
+    <select (change)= "bestMoment($event)">
+      <option value = "What a nice trip you have!">Travel outside from my country</option>
+      <option value = "You must be a great person to your friends!">Having many friends that willing share anything with me</option>
+      <option value = "Are you always alone?">I will happy if I stay alone</option>
+      <option value = "I'm glad to hard that!">Learn new knowledges makes me happy</option>
+      <option value = "You don't have any of it?">I don't have it</option>
+    </select>
+    <br>
+    <br>
+    <button (click)="happyInter()" ion-button round outline>Next</button>
+  </div>
+
+  <div *ngIf="sad">
+    <br>
+    <br>
+    {{selectedBest}}
+    <br>
+    Well, do you suffer any kind of bad moment?
+    <br>
+    <br>
+    <select (change)= "worstMoment($event)">
+      <option value = "Cheer up! I'm sure that you will find your things back!">I lost my precious thing!</option>
+      <option value = "Don't think too much, I bet that they still love you.">My parents seems like they don't like me</option>
+      <option value = "Forget about it! Because when you recall it, your life will become even worst!">I still remember that my best friend betrayed me...</option>
+      <option value = "Your life must be amazing!">I don't have it</option>
+    </select>
+    <br>
+    <br>
+    <button (click)="sadInter()" ion-button round outline>Next</button>
+  </div>
+
+  <div *ngIf="last">
+    <br>
+    <br>
+    {{selectedDislikes}}
+    {{selectedWorst}}
+    Well, thank you for sharing everything to me! {{selectedAmbs}} 
+    <br>
+    <br>
+    <button (click)="endInter()" ion-button round outline>You're welcome!</button>
+  </div>
+
+  <div *ngIf="prob">
+    <br>
+    <br>
+    I felt like...
+  </div>
+
+  <div *ngIf="drySoil1">
+    <br>
+     - I am a bit thirsty
+  </div>
+
+  <div *ngIf="drySoil2">
+    <br>
+     - I need some water
+  </div>
+
+  <div *ngIf="tooDry1">
+    <br>
+    - Too thirsty!
+  </div>
+
+  <div *ngIf="tooDry2">
+    <br>
+    - I didn't get any water at all!
+  </div>
+
+  <div *ngIf="moisSoil1">
+    <br>
+     - A bit hydrated
+  </div>
+
+  <div *ngIf="moisSoil2">
+    <br>
+     - I will feel better if I loss some water
+  </div>
+
+  <div *ngIf="tooMois1">
+    <br>
+     - Too much water for me!
+  </div>
+
+  <div *ngIf="tooMois2">
+    <br>
+     - I don't need any water anymore! That's too much!
+  </div>
+
+  <div *ngIf="tempHeat1">
+    <br>
+     - A little hot here
+  </div>
+
+  <div *ngIf="tempHeat2">
+    <br>
+     - I'm ok but this place seems hot to me
+  </div>
+
+  <div *ngIf="tooHeat1">
+    <br>
+     - Too hot here!
+  </div>
+
+  <div *ngIf="tooHeat2">
+    <br>
+     - I need to change another place! This place will burn me!
+  </div>
+
+  <div *ngIf="tempCold1">
+    <br>
+     - Not feeling well with this cold temperature
+  </div>
+
+  <div *ngIf="tempCold2">
+    <br>
+     - A bit hard to stay in this cold place
+  </div>
+
+  <div *ngIf="tooCold1">
+    <br>
+     - I can't withstand this cold temperature!
+  </div>
+
+  <div *ngIf="tooCold2">
+    <br>
+     - This place is too cold for me!
+  </div>
+
+  <div *ngIf="lowHumid1">
+    <br>
+     - Hard to get water as my nutrients in this environment
+  </div>
+
+  <div *ngIf="lowHumid2">
+    <br>
+     - Much better if I change to a bit higher humidity than this place
+  </div>
+
+  <div *ngIf="tooLow1">
+    <br>
+     - Too hard for me to stay here anymore!
+  </div>
+
+  <div *ngIf="tooLow2">
+    <br>
+     - I want to change place immediately!
+  </div>
+
+  <div *ngIf="highHumid1">
+    <br>
+     - Comfort, but sometimes hard to breathe
+  </div>
+
+  <div *ngIf="highHumid2">
+    <br>
+     - Sometimes I have problem to do transpiration, need lower humidity place if possible
+  </div>
+
+  <div *ngIf="tooHigh1">
+    <br>
+     - Too hard for me to breathe in this place!
+  </div>
+
+  <div *ngIf="tooHigh1">
+    <br>
+     - Impossible for me to do transpiration here!
+  </div>
+
+  <div *ngIf="dark1">
+    <br>
+     - A little bit dark here
+  </div>
+
+  <div *ngIf="dark2">
+    <br>
+     - I scare dark place like here
+  </div>
+
+  <div *ngIf="tooDark1">
+    <br>
+     - I cannot see anything here!
+  </div>
+
+  <div *ngIf="tooDark2">
+    <br>
+     - I don't see any light here!
+  </div>
+
+  <div *ngIf="bright1">
+    <br>
+     - I gain enough energy, so I don't need more sunlight
+  </div>
+
+  <div *ngIf="bright2">
+    <br>
+     - I will feel better if I can change to suitable place, because this place seems like a bit bright for me
+  </div>
+
+  <div *ngIf="tooBright1">
+    <br>
+     - Excessive sunlight will harm me!
+  </div>
+
+  <div *ngIf="tooBright2">
+    <br>
+     - I will blind if I continue to stay here!
+  </div>
+
+  <div *ngIf="prob">
+    <br>
+    Could you help me to solve them?
+    <br>
+    <br>
+    <button (click)="probInter()" ion-button round outline>I will solve the problem!</button>
+  </div>
+</ion-content>
