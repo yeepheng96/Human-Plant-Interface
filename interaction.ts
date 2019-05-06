@@ -352,6 +352,7 @@ export class InteractionPage {
     this.tempHeat1 = false;
     this.tempCold1 = false;
     this.lowHumid1 = false;
+    this.highHumid1 = false;
     this.dark1 = false;
     this.bright1 = false;
 
@@ -360,6 +361,7 @@ export class InteractionPage {
     this.tempHeat2 = false;
     this.tempCold2 = false;
     this.lowHumid2 = false;
+    this.highHumid2 = false;
     this.dark2 = false;
     this.bright2 = false;
 

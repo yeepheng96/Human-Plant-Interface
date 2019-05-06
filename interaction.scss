@@ -1,5 +1,15 @@
 page-interaction {
-
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+    .image{
+        background-image: url('../assets/imgs/interactionbackground.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
 }
 
 .right-text{
@@ -14,4 +24,40 @@ page-interaction {
     display: flex!important;
     align-content: center!important;
     align-items: center!important;
+}
+
+.btn{
+    border: 1px solid #32CD32;
+    background: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.btn1{
+    color: #32CD32;
+}
+
+.btn1:hover{
+    color: #fff;
+}
+
+.btn::before{
+    content:"";
+    position: absolute;
+    left:0;
+    width:100%;
+    height:0%;
+    background: #32CD32;
+    z-index: -1;
+    transition: 0.8s;
+}
+
+.btn1::before{
+    top:0;
+    border-radius: 0 0 50% 50%;
+}
+
+.btn1:hover::before{
+    height: 180%;
 }

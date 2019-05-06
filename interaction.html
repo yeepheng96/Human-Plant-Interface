@@ -5,14 +5,14 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content center text-center class="center-text">
+<ion-content center text-center class="center-text" class="image">
   <div *ngIf="greet">
     <br>
     <br>
     Hi! Nice to meet you!
     <br>
     <br>
-    <button (click)="firstInter()" ion-button round outline>Hi! How are you today?</button>
+    <button class="btn btn1" (click)="firstInter()" ion-button round outline>Hi! How are you today?</button>
   </div>
 
   <div *ngIf="plantGood">
@@ -21,7 +21,7 @@
     I'm fine! How about you?
     <br>
     <br>
-    <button (click)="myInter()" ion-button round outline>I'm fine today</button>
+    <button class="btn btn1" (click)="myInter()" ion-button round outline>I'm fine today</button>
   </div>
 
   <div *ngIf="plantBad">
@@ -30,7 +30,7 @@
     I'm not fine...
     <br>
     <br>
-    <button (click)="badPhase()" ion-button round outline>Why?</button>
+    <button class="btn btn1" (click)="badPhase()" ion-button round outline>Why?</button>
   </div>
 
   <div *ngIf="hobby">
@@ -51,7 +51,7 @@
     </select>
     <br>
     <br>
-    <button (click)="secondInter()" ion-button round outline>Next</button>
+    <button class="btn btn1" (click)="secondInter()" ion-button round outline>Next</button>
   </div>
 
   <div *ngIf="food">
@@ -75,7 +75,7 @@
     </select>
     <br>
     <br>
-    <button (click)="thirdInter()" ion-button round outline>Next</button>
+    <button class="btn btn1" (click)="thirdInter()" ion-button round outline>Next</button>
   </div>
 
   <div *ngIf="amb">
@@ -99,7 +99,7 @@
     </select>
     <br>
     <br>
-    <button (click)="forthInter()" ion-button round outline>Next</button>
+    <button class="btn btn1" (click)="forthInter()" ion-button round outline>Next</button>
   </div>
 
   <div *ngIf="likes">
@@ -118,7 +118,7 @@
     </select>
     <br>
     <br>
-    <button (click)="likingInter()" ion-button round outline>Next</button>
+    <button class="btn btn1" (click)="likingInter()" ion-button round outline>Next</button>
   </div>
 
   <div *ngIf="dislikes">
@@ -143,7 +143,7 @@
     </select>
     <br>
     <br>
-    <button (click)="dislikingInter()" ion-button round outline>Next</button>
+    <button class="btn btn1" (click)="dislikingInter()" ion-button round outline>Next</button>
   </div>
 
   <div *ngIf="happy">
@@ -158,12 +158,12 @@
       <option value = "What a nice trip you have!">Travel outside from my country</option>
       <option value = "You must be a great person to your friends!">Having many friends that willing share anything with me</option>
       <option value = "Are you always alone?">I will happy if I stay alone</option>
-      <option value = "I'm glad to hard that!">Learn new knowledges makes me happy</option>
+      <option value = "I'm glad to heard that!">Learn new knowledges makes me happy</option>
       <option value = "You don't have any of it?">I don't have it</option>
     </select>
     <br>
     <br>
-    <button (click)="happyInter()" ion-button round outline>Next</button>
+    <button class="btn btn1" (click)="happyInter()" ion-button round outline>Next</button>
   </div>
 
   <div *ngIf="sad">
@@ -182,7 +182,7 @@
     </select>
     <br>
     <br>
-    <button (click)="sadInter()" ion-button round outline>Next</button>
+    <button class="btn btn1" (click)="sadInter()" ion-button round outline>Next</button>
   </div>
 
   <div *ngIf="last">
@@ -193,7 +193,7 @@
     Well, thank you for sharing everything to me! {{selectedAmbs}} 
     <br>
     <br>
-    <button (click)="endInter()" ion-button round outline>You're welcome!</button>
+    <button class="btn btn1" (click)="endInter()" ion-button round outline>You're welcome!</button>
   </div>
 
   <div *ngIf="prob">
@@ -367,6 +367,6 @@
     Could you help me to solve them?
     <br>
     <br>
-    <button (click)="probInter()" ion-button round outline>I will solve the problem!</button>
+    <button class="btn btn1" (click)="probInter()" ion-button round outline>I will solve the problem!</button>
   </div>
 </ion-content>

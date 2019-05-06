@@ -4,15 +4,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="image">
   <div text-center *ngIf="((humids >= 50 && humids <= 60) && 
      (temps >= 25 && temps <= 30) &&
-     (soils >= 40 && soils <= 60) &&
+     (soils >= 40 && soils <= 50) &&
      (lights >= 400 && lights <= 600)) &&
      
      !((humids < 50 || humids > 60) &&
      (temps < 25 || temps > 30) &&
-     (soils < 40 || soils > 60) &&
+     (soils < 40 || soils > 50) &&
      (lights < 400 || lights > 600))">
     <img src="assets/imgs/heart.png">
     <h3>I felt very energic now!</h3>
@@ -20,22 +20,22 @@
 
   <div text-center *ngIf="!((humids >= 50 && humids <= 60) && 
      (temps >= 25 && temps <= 30) &&
-     (soils >= 40 && soils <= 60) &&
+     (soils >= 40 && soils <= 50) &&
      (lights >= 400 && lights <= 600)) &&
      
      !((humids < 50 || humids > 60) &&
      (temps < 25 || temps > 30) &&
-     (soils < 40 || soils > 60) &&
+     (soils < 40 || soils > 50) &&
      (lights < 400 || lights > 600)) &&
      
      !((humids < 40 || humids > 70) &&
      (temps < 20 || temps > 35) &&
-     (soils < 30 || soils > 70) &&
+     (soils < 30 || soils > 60) &&
      (lights < 250 || lights > 700)) &&
      
      !((humids < 30 || humids > 80) &&
      (temps < 15 || temps > 40) &&
-     (soils < 20 || soils > 85) &&
+     (soils < 15 || soils > 65) &&
      (lights < 150 || lights > 850))">
     <img src="assets/imgs/partial heart.jpg">
     <h3>I think I need some medical checkup</h3>
@@ -43,12 +43,12 @@
 
   <div text-center *ngIf="((humids < 50 || humids > 60) &&
      (temps < 25 || temps > 30) &&
-     (soils < 40 || soils > 60) &&
+     (soils < 40 || soils > 50) &&
      (lights < 400 || lights > 600)) && 
      
      !((humids < 40 || humids > 70) &&
      (temps < 20 || temps > 35) &&
-     (soils < 30 || soils > 70) &&
+     (soils < 30 || soils > 60) &&
      (lights < 250 || lights > 700))">
     <img src="assets/imgs/about break heart.jpg">
     <h3>Sometimes I'm not feeling well</h3>
@@ -56,12 +56,12 @@
 
   <div text-center *ngIf="((humids < 40 || humids > 70) &&
      (temps < 20 || temps > 35) &&
-     (soils < 35 || soils > 70) &&
+     (soils < 30 || soils > 60) &&
      (lights < 250 || lights > 700)) && 
      
      !((humids < 30 || humids > 80) &&
      (temps < 15 || temps > 40) &&
-     (soils < 20 || soils > 80) &&
+     (soils < 15 || soils > 65) &&
      (lights < 150 || lights > 800))">
     <img src="assets/imgs/broken heart.jpg">
     <h3>I'm not feeling well</h3>
@@ -69,31 +69,39 @@
 
   <div text-center *ngIf="((humids < 30 || humids > 80 )&&
      (temps < 15 || temps > 40) &&
-     (soils < 30 || soils > 85) &&
+     (soils < 15 || soils > 65) &&
      (lights < 150 || lights > 850)) &&
 
      !((humids > 30 && humids < 80) &&
      (temps > 15 && temps < 40) &&
-     (soils > 20 && soils < 85) &&
+     (soils > 15 && soils < 65) &&
      (lights > 150 && lights < 850))">
     <img src="assets/imgs/dead heart.png">
     <h3>I'm totally not feeling well</h3>
   </div>
 
-  <div text-center>
+  <div text-center *ngIf="!toggle">
+    <p>Mr.Green wants to give you some TIPS:</p>
+    <p>1. Click toggle data button to view more detailed plant condition.</p>
+    <p>2. Click more info button to learn more about the data.</p>
+    <p>3. Interact with Mr.Green to know more about it!</p>
+  </div>
+
+  <div text-center *ngIf="toggle">
     <p>Humidity:      {{humids}}%</p>
     <p>Temperature:   {{temps}}°C</p>
     <p>Soil Moisture: {{soils}}%</p>
     <p>Light Density: {{lights}}lx</p>
   </div>
 
-  <div text-center *ngIf="soils > 100">
+  <div text-center *ngIf="soils < 0">
     <p>Seems like the soil sensor doesn't placed inside the soil</p>
     <p>TIPS: Please place your soil sensor into the soil</p>
   </div>
 
   <div text-center>
-    <button (click)='dataInfo()' ion-button round outline>Info</button>
-    <button (click)='backMain()' ion-button round outline>Back</button>
+    <button class="btn btn1" (click)='moreInfo()' ion-button round outline>Toggle Data</button>
+    <button class="btn btn1" (click)='dataInfo()' ion-button round outline>More Info</button>
+    <button class="btn btn1" (click)='backMain()' ion-button round outline>Back</button>
   </div>
 </ion-content>
