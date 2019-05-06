@@ -7,12 +7,20 @@
 </ion-header>
 
 <ion-content center text-center class="center-text">
-  <br>
-  Will you come back to chat with me again?
   <div>
+    <br>
+      Will you come back to chat with me again?
     <br>
     <button class="btn btn1" (click)="btnRate()" ion-button>Yes!</button>
     <button class="btn btn1" (click)="btnUnrate()" ion-button>No</button>
     <button class="btn btn1" (click)="backMain()" ion-button>I'll decide later</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    Your current rated: {{rated}} <button class="btn btn1" (click)="btnDelete()" ion-button>Delete rate</button>
   </div>
 </ion-content>

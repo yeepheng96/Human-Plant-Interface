@@ -11,16 +11,18 @@ import { MainPage } from '../main/main';
 export class EvaluationPage {
 
   currentRate;
+  rated;
 
   constructor(public navCtrl: NavController, 
   public navParams: NavParams,
   public alertCtrl: AlertController,
   public afd: AngularFireDatabase) {
     this.getRate();
+    this.getRated();
   }
 
   getRate(){
-    this.afd.list('/overallRates/').valueChanges().subscribe( // DHT11 selected firebase
+    this.afd.list('/overallRates/').valueChanges().subscribe( // Get value of current rate
       data =>{
         console.log(data)
         var numRate = +data;   //Change to number *IMPORTANT
@@ -29,36 +31,108 @@ export class EvaluationPage {
     )
   }
 
+  getRated(){
+    this.afd.list('/rated/').valueChanges().subscribe( // Confirm rated value
+      data =>{
+        console.log(data)
+        var ratedValue = data;   // Assign data into ratedValue
+        this.rated = ratedValue; // make ratedValue into rated (global)
+      }
+    )
+  }
+
   btnRate(){
     this.currentRate = this.currentRate + 1;
     this.currentRate = this.currentRate.toString();
-    this.afd.list("/overallRates/").set("rate",this.currentRate);
+    this.rated = this.rated.toString();
 
-    let alert = this.alertCtrl.create({
-      title: 'Evaluated Message',
-      message: 'Thank you for your support!',
+    if(this.rated=="Unrated" || this.rated=="No rated"){
+      this.rated = "Rated";
+      this.afd.list("/overallRates/").set("rate",this.currentRate);
+      this.afd.list("/rated/").set("rated",this.rated);
+
+      let alert = this.alertCtrl.create({
+      title: 'Mr Green Message',
+      message: 'Thank you! I am very happy to heard that!',
       buttons: ['OK']
-    });
+      });
 
-    alert.present();
+      alert.present();
+    }
+    else{
+      let alert = this.alertCtrl.create({
+        title: 'Mr Green Message',
+        message: 'Ops! You have already rated this system!',
+        buttons: ['OK']
+      });
+
+      alert.present();
+    }
     this.navCtrl.setRoot(MainPage, {currentRate:this.currentRate});
   }
 
   btnUnrate(){
-    this.currentRate = this.currentRate - 1;
-    this.currentRate = this.currentRate.toString();
-    if(this.currentRate!=-1){
-      this.afd.list("/overallRates/").set("rate",this.currentRate);
+    if(this.rated=="Rated"){
+      this.currentRate = this.currentRate - 1;
     }
+    this.currentRate = this.currentRate.toString();
+    if(this.currentRate!=-1 && this.rated=="Rated" || this.rated=="No rated"){
+      this.rated = "Unrated";
+      this.afd.list("/overallRates/").set("rate",this.currentRate);
+      this.afd.list("/rated/").set("rated",this.rated);
 
-    let alert = this.alertCtrl.create({
-      title: 'Evaluated Message',
-      message: 'Thank you for your support!',
-      buttons: ['OK']
-    });
+      let alert = this.alertCtrl.create({
+        title: 'Mr Green Message',
+        message: 'Thank you! Please come back anytime!',
+        buttons: ['OK']
+      });
 
     alert.present();
+    }
+
+    else{
+      let alert = this.alertCtrl.create({
+        title: 'Mr Green Message',
+        message: 'Ops! You have already unrated this system!',
+        buttons: ['OK']
+      });
+
+      alert.present();
+    }
     this.navCtrl.setRoot(MainPage, {currentRate:this.currentRate});
+  }
+
+  btnDelete(){
+    if(this.rated=="Rated"){
+      this.currentRate = this.currentRate - 1;
+      this.currentRate = this.currentRate.toString();
+      this.rated = "No rated";
+      this.afd.list("/overallRates/").set("rate",this.currentRate);
+      this.afd.list("/rated/").set("rated",this.rated);
+
+      let alert = this.alertCtrl.create({
+        title: 'Mr Green Message',
+        message: 'Your rate was deleted!',
+        buttons: ['OK']
+      });
+
+    alert.present();
+    }
+
+    else if(this.rated=="Unrated"){
+      this.currentRate = this.currentRate.toString();
+      this.rated = "No rated";
+      this.afd.list("/overallRates/").set("rate",this.currentRate);
+      this.afd.list("/rated/").set("rated",this.rated);
+
+      let alert = this.alertCtrl.create({
+        title: 'Mr Green Message',
+        message: 'Your rate was deleted!',
+        buttons: ['OK']
+      });
+
+    alert.present();
+    }
   }
 
   backMain(){
