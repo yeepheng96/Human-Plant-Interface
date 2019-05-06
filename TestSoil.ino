@@ -7,10 +7,8 @@
 #define WIFI_SSID "Kachi Monkey"                                             
 #define WIFI_PASSWORD "ascent3651"                                                                                   
 
-int WET = 16; // Wet Indicator at Digital pin D0
-int DRY = 2;  // Dry Indicator at Digital pin D4
-int sense_Pin = 0; // sensor input at Analog pin A0
-int value = 0;
+int sense_Pin = A0; // sensor input at Analog pin A0
+int value;
 
 void setup() {
   Serial.begin(9600);
@@ -28,28 +26,17 @@ void setup() {
   Serial.print("IP Address is : ");
   Serial.println(WiFi.localIP());                                            
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);                              
-  pinMode(WET, OUTPUT);
-  pinMode(DRY, OUTPUT);
 }
 
 void loop() {
-  Serial.print("Moisture Level: ");
   value= analogRead(sense_Pin);
-  value= value/10;
+  value= map(value,550,0,0,100);
+  Serial.print("Moisture Level: ");
   Serial.print(value);
   Serial.println("%");
-    if(value<50){
-      digitalWrite(WET, HIGH);
-    }
-    else{
-      digitalWrite(DRY,HIGH);
-    }
   String fireMois = String(value);
 
   delay(5000);
-
-  digitalWrite(WET,LOW);
-  digitalWrite(DRY, LOW);
   
   Firebase.setString("/Soil_Sensor/Moisture", fireMois);
 }
